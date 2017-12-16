@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Index from '@/components/index/Index.vue'
-import { appRouter } from './../components/index/index'
+import appRouter from './appRouter'
 
 Vue.use(Router)
 

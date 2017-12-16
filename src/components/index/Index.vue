@@ -1,35 +1,26 @@
 <template>
   <Row class="row">
     <Col class="col" :span="5">
-    <Menu class="menu" width="auto">
-      <template v-for="menuItemLevelOne in appRouter">
-        <Submenu v-if="menuItemLevelOne.children" :key="menuItemLevelOne.title">
-          <template slot="title">
-            <Icon :type="menuItemLevelOne.icon"></Icon>
-            {{menuItemLevelOne.title}}
-          </template>
-          <MenuItem v-for="menuItemLevelTwo in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="menuItemLevelTwo.title">
-          <Icon :type="menuItemLevelTwo.icon" :key="menuItemLevelTwo.icon"></Icon>
-          {{menuItemLevelTwo.title}}
-          </MenuItem>
-        </Submenu>
-        <MenuItem v-else :name="menuItemLevelOne.path" :key="menuItemLevelOne.title">
-        <Icon :type="menuItemLevelOne.icon" :key="menuItemLevelOne.icon"></Icon>
-        {{menuItemLevelOne.title}}
-        </MenuItem>
-      </template>
-    </Menu>
+    <sidebar-menu>
+      <div class="logo" slot="logo">
+        <img src="./../../assets/logo.png" height="50"></img>
+      </div>
+    </sidebar-menu>
+    </Col>
+    <Col class="col" span="19">
+    <router-view></router-view>
     </Col>
   </Row>
 </template>
 
 <script>
-  import { appRouter } from "./index";
+  import SidebarMenu from "./sidebarMenu/SidebarMenu.vue";
   export default {
+    components: {
+      SidebarMenu
+    },
     data() {
-      return {
-        appRouter
-      };
+      return {};
     }
   };
 </script>
@@ -41,7 +32,8 @@
   .col {
     height: 100%;
   }
-  .menu {
-    height: 100%;
+  .logo {
+    text-align: center;
+    padding: 20px 0;
   }
 </style>
