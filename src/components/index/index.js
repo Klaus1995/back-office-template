@@ -1,6 +1,7 @@
 const sidebarMenuConf = {
   theme: 'dark',
-  accordion: true
+  accordion: true,
+  shrink: true
 };
 
 export {

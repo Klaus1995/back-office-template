@@ -1,13 +1,14 @@
 <template>
   <Row class="row">
-    <Col class="col" :span="5">
-    <sidebar-menu>
+    <Col class="col" :span="shrink?1:4">
+    <sidebar-menu :shrink="shrink">
       <div class="logo" slot="logo">
-        <img src="./../../assets/logo.png" height="50"></img>
+        <img src="./../../assets/logo.png" height="35"></img>
       </div>
     </sidebar-menu>
     </Col>
-    <Col class="col" span="19">
+    <Col class="col" :span="shrink?23:20">
+    <page-header @toggleMenu="toggleMenu"></page-header>
     <router-view></router-view>
     </Col>
   </Row>
@@ -15,12 +16,22 @@
 
 <script>
   import SidebarMenu from "./sidebarMenu/SidebarMenu.vue";
+  import PageHeader from "./pageHeader/PageHeader.vue";
+
   export default {
     components: {
-      SidebarMenu
+      SidebarMenu,
+      PageHeader
     },
     data() {
-      return {};
+      return {
+        shrink: false
+      };
+    },
+    methods: {
+      toggleMenu() {
+        this.shrink = !this.shrink;
+      }
     }
   };
 </script>
@@ -31,9 +42,10 @@
   }
   .col {
     height: 100%;
+    transition: all 0.5s;
   }
   .logo {
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
   }
 </style>
