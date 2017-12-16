@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar_menu">
-    <Menu class="menu" width="auto">
+    <Menu class="menu" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
       <slot class="logo" name="logo"></slot>
       <template v-for="menuItemLevelOne in appRouter">
-        <Submenu v-if="menuItemLevelOne.children" :name="menuItemLevelOne.path" :key="menuItemLevelOne.title">
+        <Submenu v-if="menuItemLevelOne.children.length>1" :name="menuItemLevelOne.path" :key="menuItemLevelOne.title">
           <template slot="title">
             <Icon :type="menuItemLevelOne.icon"></Icon>
             {{menuItemLevelOne.title}}
@@ -24,13 +24,20 @@
 
 <script>
   import appRouter from "@/router/appRouter";
+  import { sidebarMenuConf } from "@/components/index/index";
 
   export default {
     name: "sidebarMenu",
     data() {
       return {
-        appRouter
+        appRouter,
+        sidebarMenuConf
       };
+    },
+    methods: {
+      changePath(path) {
+        this.$router.push(path);
+      }
     }
   };
 </script>
