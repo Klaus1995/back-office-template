@@ -32,40 +32,4 @@ export default [{
     title: '测试二级目录2',
     component: Test
   }]
-}, {
-  path: '/index/two',
-  icon: 'flag',
-  title: '测试一级目录',
-  component: Index,
-  children: [{
-    path: '/index/two',
-    name: 'two',
-    icon: 'star',
-    title: '测试二级目录1',
-    component: Test
-  }, {
-    path: '/index/two2',
-    name: 'two',
-    icon: 'star',
-    title: '测试二级目录2',
-    component: Test
-  }]
-}, {
-  path: '/index/two',
-  icon: 'flag',
-  title: '测试一级目录',
-  component: Index,
-  children: [{
-    path: '/index/two',
-    name: 'two',
-    icon: 'star',
-    title: '测试二级目录1',
-    component: Test
-  }, {
-    path: '/index/two2',
-    name: 'two',
-    icon: 'star',
-    title: '测试二级目录2',
-    component: Test
-  }]
 }]

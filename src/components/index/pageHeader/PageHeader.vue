@@ -47,6 +47,7 @@
   .row {
     height: 60px;
     background: #fff;
+    box-shadow: 0 2px 1px 1px hsla(0, 0%, 39%, 0.1);
   }
   .ml-10 {
     margin-left: 10px;

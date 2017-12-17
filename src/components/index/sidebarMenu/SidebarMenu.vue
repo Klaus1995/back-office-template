@@ -5,7 +5,7 @@
       <template v-for="(menuItemLevelOne,index) in appRouter">
         <Dropdown class="shrink-dropdown" transfer placement="right-start" :key="index" @on-click="changePath">
           <Button class="shrink-button" type="text">
-            <Icon class="shrink-icon" :type="menuItemLevelOne.icon"></Icon>
+            <Icon class="shrink-icon" :style="{color: iconColor}" :type="menuItemLevelOne.icon"></Icon>
           </Button>
           <DropdownMenu slot="list">
             <DropdownItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
@@ -16,7 +16,7 @@
         </Dropdown>
       </template>
     </template>
-    <Menu v-else class="menu" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
+    <Menu v-else class="menu" :active-name="$route.path" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
       <slot class="logo" name="logo"></slot>
       <template v-for="(menuItemLevelOne,index) in appRouter">
         <Submenu class="submenu" v-if="menuItemLevelOne.children.length>1" :name="menuItemLevelOne.path" :key="index">
@@ -56,6 +56,11 @@
     computed: {
       backgroundColor() {
         return this.sidebarMenuConf.theme === "dark" ? "#495060" : "#fff";
+      },
+      iconColor() {
+        return this.sidebarMenuConf.theme === "dark"
+          ? "rgba(255, 255, 255, 0.7)"
+          : "#495060";
       }
     },
     methods: {
@@ -82,7 +87,6 @@
     padding: 14px 0;
   }
   .shrink-icon {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
   }
 </style>
