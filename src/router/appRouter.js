@@ -1,6 +1,6 @@
 import Index from '@/components/index/Index.vue'
 import Home from '@/components/home/Home.vue'
-import Table from '@/components/table/Table.vue'
+import TablePage from '@/components/table_page/TablePage.vue'
 
 export default [{
   path: '/index/home',
@@ -23,8 +23,7 @@ export default [{
     path: '/index/table',
     name: 'table',
     icon: 'ios-list',
-
     title: '带图表表格',
-    component: Table
+    component: TablePage
   }]
 }]

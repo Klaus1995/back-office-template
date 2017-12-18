@@ -52,5 +52,7 @@
   }
   .content {
     padding: 10px;
+    height: calc(100% - 50px);
+    overflow: auto;
   }
 </style>
