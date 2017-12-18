@@ -1,40 +1,42 @@
 <template>
   <div class="sidebar-menu" :style="{background: backgroundColor}">
-    <template v-if="shrink">
-      <slot class="logo" name="logo"></slot>
-      <template v-for="(menuItemLevelOne,index) in appRouter">
-        <Dropdown class="shrink-dropdown" transfer placement="right-start" :key="index" @on-click="changePath">
-          <Button class="shrink-button" type="text">
-            <Icon class="shrink-icon" :style="{color: iconColor}" :type="menuItemLevelOne.icon"></Icon>
-          </Button>
-          <DropdownMenu slot="list">
-            <DropdownItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
-              <Icon :type="menuItemLevelTwo.icon" :key="index"></Icon>
-              {{menuItemLevelTwo.title}}
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </template>
-    </template>
-    <Menu v-else class="menu" :active-name="$route.path" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
-      <slot class="logo" name="logo"></slot>
-      <template v-for="(menuItemLevelOne,index) in appRouter">
-        <Submenu class="submenu" v-if="menuItemLevelOne.children.length>1" :name="menuItemLevelOne.path" :key="index">
-          <template slot="title">
-            <Icon :type="menuItemLevelOne.icon"></Icon>
-            {{menuItemLevelOne.title}}
-          </template>
-          <MenuItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
-          <Icon :type="menuItemLevelTwo.icon" :key="index"></Icon>
-          {{menuItemLevelTwo.title}}
+    <transition name="fade">
+      <div v-if="shrink">
+        <slot class="logo" name="logo"></slot>
+        <template v-for="(menuItemLevelOne,index) in appRouter">
+          <Dropdown class="shrink-dropdown" transfer placement="right-start" :key="index" @on-click="changePath">
+            <Button class="shrink-button" type="text">
+              <Icon class="shrink-icon" :style="{color: iconColor}" :type="menuItemLevelOne.icon"></Icon>
+            </Button>
+            <DropdownMenu slot="list">
+              <DropdownItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
+                <Icon :type="menuItemLevelTwo.icon" :key="index"></Icon>
+                {{menuItemLevelTwo.title}}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </template>
+      </div>
+      <Menu v-else class="menu" :active-name="$route.path" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
+        <slot class="logo" name="logo"></slot>
+        <template v-for="(menuItemLevelOne,index) in appRouter">
+          <Submenu class="submenu" v-if="menuItemLevelOne.children.length>1" :name="menuItemLevelOne.path" :key="index">
+            <template slot="title">
+              <Icon :type="menuItemLevelOne.icon"></Icon>
+              {{menuItemLevelOne.title}}
+            </template>
+            <MenuItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
+            <Icon :type="menuItemLevelTwo.icon" :key="index"></Icon>
+            {{menuItemLevelTwo.title}}
+            </MenuItem>
+          </Submenu>
+          <MenuItem v-else :name="menuItemLevelOne.path" :key="index">
+          <Icon :type="menuItemLevelOne.icon" :key="index"></Icon>
+          {{menuItemLevelOne.title}}
           </MenuItem>
-        </Submenu>
-        <MenuItem v-else :name="menuItemLevelOne.path" :key="index">
-        <Icon :type="menuItemLevelOne.icon" :key="index"></Icon>
-        {{menuItemLevelOne.title}}
-        </MenuItem>
-      </template>
-    </Menu>
+        </template>
+      </Menu>
+    </transition>
   </div>
 </template>
 
@@ -88,5 +90,15 @@
   }
   .shrink-icon {
     font-size: 20px;
+  }
+  .fade-enter-active {
+    transition: opacity 0.5s;
+  }
+  .fade-leave-active {
+    display: none;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>

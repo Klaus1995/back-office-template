@@ -9,7 +9,9 @@
     </Col>
     <Col class="col" :span="shrink?23:20">
     <page-header @toggleMenu="toggleMenu"></page-header>
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
     </Col>
   </Row>
 </template>
@@ -47,5 +49,8 @@
   .logo {
     text-align: center;
     padding: 10px 0;
+  }
+  .content {
+    padding: 10px;
   }
 </style>

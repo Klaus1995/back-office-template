@@ -1,6 +1,6 @@
 import Index from '@/components/index/Index.vue'
 import Home from '@/components/home/Home.vue'
-import Test from '@/components/home/Test.vue'
+import Table from '@/components/table/Table.vue'
 
 export default [{
   path: '/index/home',
@@ -15,21 +15,16 @@ export default [{
     component: Home,
   }]
 }, {
-  path: '/index/two',
-  icon: 'flag',
-  title: '测试一级目录',
+  path: '/index/table',
+  icon: 'ios-list',
+  title: '表格',
   component: Index,
   children: [{
-    path: '/index/two',
-    name: 'two',
-    icon: 'star',
-    title: '测试二级目录1',
-    component: Test
-  }, {
-    path: '/index/two2',
-    name: 'two',
-    icon: 'star',
-    title: '测试二级目录2',
-    component: Test
+    path: '/index/table',
+    name: 'table',
+    icon: 'ios-list',
+
+    title: '带图表表格',
+    component: Table
   }]
 }]
