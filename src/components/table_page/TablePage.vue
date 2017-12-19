@@ -1,15 +1,15 @@
 <template>
   <div>
     <Row :gutter="10" type="flex">
-      <Col :lg="{span:16,order:1}" :md="{span:24,order:2}" :sm="{span:24,order:2}">
+      <Col :lg="{span:16,order:1}" :md="{span:24,order:2}" :sm="{span:24,order:2}" :xs="{span:24,order:2}">
       <table-list class="mb-10"></table-list>
       </Col>
-      <Col :lg="{span:8,order:2}" :md="{span:24,order:1}" :sm="{span:24,order:1}">
+      <Col :lg="{span:8,order:2}" :md="{span:24,order:1}" :sm="{span:24,order:1}" :xs="{span:24,order:1}">
       <Row :gutter="10" type="flex">
-        <Col :lg="24" :md="12" :sm="24">
+        <Col :lg="24" :md="10" :sm="24" :xs="24">
         <table-filter class="mb-10"></table-filter>
         </Col>
-        <Col :lg="24" :md="12" :sm="24">
+        <Col :lg="24" :md="14" :sm="24" :xs="24">
         <chart class="mb-10"></chart>
         </Col>
       </Row>
