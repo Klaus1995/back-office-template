@@ -1,6 +1,7 @@
 <template>
   <div class="sidebar-menu" :style="{background: backgroundColor}">
     <transition name="fade">
+
       <div v-if="shrink">
         <slot class="logo" name="logo"></slot>
         <template v-for="(menuItemLevelOne,index) in appRouter">
@@ -17,7 +18,8 @@
           </Dropdown>
         </template>
       </div>
-      <Menu v-else class="menu" :active-name="$route.path" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
+
+      <Menu v-else class="menu" :open-names="openSubmenu" :active-name="$route.path" width="auto" :theme="sidebarMenuConf.theme" :accordion="sidebarMenuConf.accordion" @on-select="changePath">
         <slot class="logo" name="logo"></slot>
         <template v-for="(menuItemLevelOne,index) in appRouter">
           <Submenu class="submenu" v-if="menuItemLevelOne.children.length>1" :name="menuItemLevelOne.path" :key="index">
@@ -36,6 +38,7 @@
           </MenuItem>
         </template>
       </Menu>
+
     </transition>
   </div>
 </template>
@@ -63,6 +66,22 @@
         return this.sidebarMenuConf.theme === "dark"
           ? "rgba(255, 255, 255, 0.7)"
           : "#495060";
+      },
+      openSubmenu() {
+        return appRouter
+          .filter(item => {
+            if (item.children && item.children.length > 1) {
+              return (
+                item.children.findIndex(item => {
+                  return item.path === this.$route.path;
+                }) >= 0
+              );
+            }
+            return false;
+          })
+          .map(item => {
+            return item.path;
+          });
       }
     },
     methods: {

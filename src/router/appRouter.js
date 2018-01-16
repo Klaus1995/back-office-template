@@ -1,6 +1,7 @@
 import Index from '@/components/index/Index.vue'
 import Home from '@/components/home/Home.vue'
-import TablePage from '@/components/table_page/TablePage.vue'
+import Management from '@/components/management/Management.vue'
+
 
 export default [{
   path: '/index/home',
@@ -15,15 +16,27 @@ export default [{
     component: Home,
   }]
 }, {
-  path: '/index/table',
-  icon: 'ios-list',
-  title: '表格',
+  path: '/index/management',
+  icon: 'settings',
+  title: '管理',
   component: Index,
   children: [{
-    path: '/index/table',
-    name: 'table',
-    icon: 'ios-list',
-    title: '带图表表格',
-    component: TablePage
+    path: '/index/management',
+    name: 'management',
+    icon: 'settings',
+    title: '个人管理',
+    component: Management
+  }, {
+    path: '/index/management1',
+    name: 'management',
+    icon: 'settings',
+    title: '个人管理1',
+    component: Management
+  }, {
+    path: '/index/management2',
+    name: 'management',
+    icon: 'settings',
+    title: '个人管理2',
+    component: Management
   }]
 }]

@@ -2,9 +2,7 @@
   <Row class="row">
     <Col class="col" :span="shrink?1:4">
     <sidebar-menu :shrink="shrink">
-      <div class="logo" slot="logo">
-        <img src="./../../assets/logo.png" height="35"></img>
-      </div>
+      <div class="logo" slot="logo"></div>
     </sidebar-menu>
     </Col>
     <Col class="col" :span="shrink?23:20">
@@ -48,6 +46,7 @@
   }
   .logo {
     text-align: center;
+    height: 60px;
     padding: 10px 0;
   }
   .content {
