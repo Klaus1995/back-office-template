@@ -10,7 +10,7 @@
               <Icon class="shrink-icon" :style="{color: iconColor}" :type="menuItemLevelOne.icon"></Icon>
             </Button>
             <DropdownMenu slot="list">
-              <DropdownItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
+              <DropdownItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" v-if="menuItemLevelTwo.title" :name="menuItemLevelTwo.path" :key="index">
                 <Icon :type="menuItemLevelTwo.icon" :key="index"></Icon>
                 {{menuItemLevelTwo.title}}
               </DropdownItem>
@@ -27,7 +27,7 @@
               <Icon :type="menuItemLevelOne.icon"></Icon>
               {{menuItemLevelOne.title}}
             </template>
-            <MenuItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" :name="menuItemLevelTwo.path" :key="index">
+            <MenuItem v-for="(menuItemLevelTwo,index) in menuItemLevelOne.children" v-if="menuItemLevelTwo.title" :name="menuItemLevelTwo.path" :key="index">
             <Icon :type="menuItemLevelTwo.icon" :key="index"></Icon>
             {{menuItemLevelTwo.title}}
             </MenuItem>

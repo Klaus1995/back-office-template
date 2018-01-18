@@ -5,10 +5,12 @@ import App from './App'
 import router from './router'
 import store from './store'
 import iview from 'iview'
+import iviewArea from 'iview-area'
 import 'iview/dist/styles/iview.css'
 import './api/index'
 
 Vue.use(iview);
+Vue.use(iviewArea);
 
 Vue.config.productionTip = false;
 

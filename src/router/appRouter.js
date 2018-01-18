@@ -1,6 +1,7 @@
 import Index from '@/components/index/Index.vue'
 import Home from '@/components/home/Home.vue'
-import Management from '@/components/management/Management.vue'
+import MyHome from '@/components/management/home-management/MyHome.vue'
+import AddHome from '@/components/management/home-management/AddHome.vue'
 
 
 export default [{
@@ -16,27 +17,18 @@ export default [{
     component: Home,
   }]
 }, {
-  path: '/index/management',
+  path: '/index/management/my-home',
   icon: 'settings',
   title: '管理',
   component: Index,
   children: [{
-    path: '/index/management',
+    path: '/index/management/my-home',
     name: 'management',
-    icon: 'settings',
-    title: '个人管理',
-    component: Management
+    icon: 'ios-home',
+    title: '房屋管理',
+    component: MyHome,
   }, {
-    path: '/index/management1',
-    name: 'management',
-    icon: 'settings',
-    title: '个人管理1',
-    component: Management
-  }, {
-    path: '/index/management2',
-    name: 'management',
-    icon: 'settings',
-    title: '个人管理2',
-    component: Management
+    path: '/index/management/add-home',
+    component: AddHome
   }]
 }]
